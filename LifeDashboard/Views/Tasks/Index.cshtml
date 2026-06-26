@@ -1,18 +1,76 @@
-﻿@model TModel
+﻿@model IEnumerable<LifeDashboard.Models.TaskItem>
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Manager Task-uri";
 }
 
-<!DOCTYPE html>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-5">📋 Lista mea de Task-uri</h1>
+        <a asp-action="Create" class="btn btn-primary">➕ Adaugă Task Nou</a>
+    </div>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center" role="alert">
+            Nu ai salvat niciun task momentan. Apasă pe butonul de mai sus pentru a adăuga primul tău task!
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Status</th>
+                        <th>Titlu</th>
+                        <th>Descriere</th>
+                        <th>Data Limită</th>
+                        <th class="text-end">Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @if (item.IsCompleted)
+                                {
+                                    <span class="badge bg-success">Finalizat</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">În lucru</span>
+                                }
+                            </td>
+                            <td class="@(item.IsCompleted ? "text-decoration-line-through text-muted" : "") fw-bold">
+                                @item.Title
+                            </td>
+                            <td>@item.Description</td>
+                            <td>
+                                @if (item.DueDate.HasValue)
+                                {
+                                    @item.DueDate.Value.ToString("dd.MM.yyyy")
+                                }
+                                else
+                                {
+                                    <span class="text-muted">-</span>
+                                }
+                            </td>
+                            <td class="text-end">
+                                <div class="btn-group" role="group">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">✏️ Editează</a>
+                                    
+                                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Ești sigur că vrei să ștergi acest task?');" style="display:inline;">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">🗑️ Șterge</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
 </div>
-</body>
-</html>

@@ -1,0 +1,32 @@
+﻿@model LifeDashboard.Models.Habit
+
+@{
+    ViewData["Title"] = "Adaugă Obicei Nou";
+}
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h1 class="display-6 mb-4">➕ Definește un Obicei Nou</h1>
+
+    <div class="card shadow-sm p-4">
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label fw-bold">Nume Obicei</label>
+                <input asp-for="Title" class="form-control" placeholder="Ex: Mergi la sală, Bea apă..." />
+                <span asp-validation-for="Title" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label fw-bold">De ce vrei să faci asta? (Descriere)</label>
+                <textarea asp-for="Description" class="form-control" rows="3" placeholder="Ex: Să am mai multă energie în fiecare zi..."></textarea>
+                <span asp-validation-for="Description" class="text-danger small"></span>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a asp-action="Index" class="btn btn-outline-secondary">🔙 Înapoi la listă</a>
+                <button type="submit" class="btn btn-success">💾 Începe Obiceiul</button>
+            </div>
+        </form>
+    </div>
+</div>

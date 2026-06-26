@@ -1,4 +1,4 @@
-namespace WebApplication1.Models;
+namespace LifeDashboard.Models;
 
 public class ErrorViewModel
 {

@@ -1,11 +1,10 @@
-﻿namespace LifeDashboard.Controllers;
-
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LifeDashboard.Data;
 using LifeDashboard.Models;
 using System.Threading.Tasks;
 
+namespace LifeDashboard.Controllers;
 
 public class TasksController : Controller
 {

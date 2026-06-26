@@ -1,8 +1,8 @@
 using System.Diagnostics;
+using LifeDashboard.Models;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Models;
 
-namespace WebApplication1.Controllers;
+namespace LifeDashboard.Controllers;
 
 public class HomeController : Controller
 {
