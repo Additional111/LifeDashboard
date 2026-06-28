@@ -1,0 +1,50 @@
+﻿@model LifeDashboard.Models.MealLogModel
+
+@{
+    ViewData["Title"] = "Adaugă Masă";
+}
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h1 class="display-6 mb-4">🍏 Înregistrează o Masă / Aliment</h1>
+
+    <div class="card shadow-sm p-4">
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                <label asp-for="FoodName" class="form-label fw-bold">Denumire Aliment sau Masă</label>
+                <input asp-for="FoodName" class="form-control" placeholder="Ex: Piept de pui cu orez, Omletă, măr..." />
+                <span asp-validation-for="FoodName" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Calories" class="form-label fw-bold">Calorii (kcal)</label>
+                <input asp-for="Calories" type="number" class="form-control" placeholder="0" />
+                <span asp-validation-for="Calories" class="text-danger small"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-4 mb-3">
+                    <label asp-for="Proteins" class="form-label fw-bold text-primary">Proteine (g)</label>
+                    <input asp-for="Proteins" type="number" class="form-control" placeholder="0" />
+                    <span asp-validation-for="Proteins" class="text-danger small"></span>
+                </div>
+                <div class="col-4 mb-3">
+                    <label asp-for="Carbs" class="form-label fw-bold text-success">Carbs (g)</label>
+                    <input asp-for="Carbs" type="number" class="form-control" placeholder="0" />
+                    <span asp-validation-for="Carbs" class="text-danger small"></span>
+                </div>
+                <div class="col-4 mb-3">
+                    <label asp-for="Fats" class="form-label fw-bold text-warning">Grăsimi (g)</label>
+                    <input asp-for="Fats" type="number" class="form-control" placeholder="0" />
+                    <span asp-validation-for="Fats" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a asp-action="Index" class="btn btn-outline-secondary">🔙 Înapoi la jurnal</a>
+                <button type="submit" class="btn btn-success">💾 Adaugă în Jurnal</button>
+            </div>
+        </form>
+    </div>
+</div>

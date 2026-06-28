@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LifeDashboard.Models;
 
-public class TaskItem
+public class TaskItemModel
 {
     [Key]
     public int Id { get; set; }

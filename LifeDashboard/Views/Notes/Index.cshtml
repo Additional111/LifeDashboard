@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LifeDashboard.Models.NoteModel>
+
+@{
+    ViewData["Title"] = "Note & Jurnal";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-5">📝 Note & Jurnal Personal</h1>
+        <a asp-action="Create" class="btn btn-warning fw-bold text-dark">➕ Notă Nouă</a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="card p-5 text-center bg-light border-0 shadow-sm">
+            <p class="text-muted fs-5 mb-0">Nu ai scris nicio notă încă. Începe să-ți așezi gândurile sau ideile!</p>
+        </div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 border-top border-warning border-4 p-3 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle small text-uppercase">@item.Category</span>
+                                <small class="text-muted">@item.CreatedAt.ToString("dd.MM.yyyy HH:mm")</small>
+                            </div>
+                            <h5 class="fw-bold text-dark text-truncate mb-2">@item.Title</h5>
+                            <p class="text-secondary small" style="white-space: pre-line;">@item.Content</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between border-top pt-2 mt-3">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary border-0">✏️ Editează</a>
+                            
+                            <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Sigur vrei să ștergi această notă?');">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-sm btn-outline-danger border-0">🗑️ Șterge</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

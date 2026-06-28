@@ -30,7 +30,7 @@ public class TasksController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(TaskItem task)
+    public async Task<IActionResult> Create(TaskItemModel task)
     {
         if (ModelState.IsValid)
         {
@@ -59,7 +59,7 @@ public class TasksController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, TaskItem task)
+    public async Task<IActionResult> Edit(int id, TaskItemModel task)
     {
         if (id != task.Id)
         {

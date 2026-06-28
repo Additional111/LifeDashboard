@@ -29,19 +29,19 @@ public class HabitsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(Habit habit)
+    public async Task<IActionResult> Create(HabitModel habitModel)
     {
         if (ModelState.IsValid)
         {
-            habit.CreatedAt = DateTime.Now;
-            habit.Streak = 0;
+            habitModel.CreatedAt = DateTime.Now;
+            habitModel.Streak = 0;
 
-            _context.Habits.Add(habit);
+            _context.Habits.Add(habitModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        return View(habit);
+        return View(habitModel);
     }
 
     [HttpPost]
@@ -99,9 +99,9 @@ public class HabitsController : Controller
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, Habit habit)
+    public async Task<IActionResult> Edit(int id, HabitModel habitModel)
     {
-        if (id != habit.Id)
+        if (id != habitModel.Id)
         {
             return NotFound();
         }
@@ -110,12 +110,12 @@ public class HabitsController : Controller
         {
             try
             {
-                _context.Update(habit);
+                _context.Update(habitModel);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!HabitExists(habit.Id))
+                if (!HabitExists(habitModel.Id))
                 {
                     return NotFound();
                 }
@@ -126,7 +126,7 @@ public class HabitsController : Controller
             }
             return RedirectToAction(nameof(Index));
         }
-        return View(habit);
+        return View(habitModel);
     }
     
     [HttpPost]

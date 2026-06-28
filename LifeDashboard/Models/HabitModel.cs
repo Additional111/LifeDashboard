@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LifeDashboard.Models;
 
-public class Habit
+public class HabitModel
 {
     [Key]
     public int Id { get; set; }
