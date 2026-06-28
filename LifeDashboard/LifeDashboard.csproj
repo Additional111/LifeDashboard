@@ -14,4 +14,25 @@
       </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Habits\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Habits\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Habits\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Home\Privacy.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\MealLogs\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\MealLogs\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Notes\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Notes\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Notes\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Tasks\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Tasks\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Tasks\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Transactions\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Transactions\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\Error.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\_Layout.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    </ItemGroup>
+
 </Project>
